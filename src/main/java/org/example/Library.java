@@ -1,8 +1,6 @@
 package org.example;
 
 import lombok.AllArgsConstructor;
-
-import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +32,12 @@ public class Library {
         // that are stored in the library
 
         // searches for the book
-        for (Book book : books) {
+        bookLoop: for (Book book : books) {
             // searches using the title
             String title = book.getTitle().toLowerCase();  // changes title to lowercase
             if (title.contains(keyword)) {
                 result.add(book); // if the title has the word, add the book
+                continue; // continue searching for other matches
             }
 
             // searches using the author
@@ -47,6 +46,8 @@ public class Library {
                 String findAuthor = author.getName().toLowerCase(); // changes author to lowercase
                 if (name.contains(keyword)) {
                     result.add(book); // if the author had the keyword, add the book
+                    continue bookLoop; // without bookLoop, continue is useless because it only
+                                       // continues the inner loop
                 }
             }
 
