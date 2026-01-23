@@ -68,7 +68,5 @@ public class Main {
         boolean strEmpty = str.isEmpty();                              // string
         boolean arrayEmpty = nums1.length == 0;                        // array
         boolean listEmpty = nums3.isEmpty();                           // list
-
-
     }
 }
