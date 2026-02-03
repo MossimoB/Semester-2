@@ -9,11 +9,15 @@ public class Dog extends Pet { // extends means that Pet is parent class
 
     public Dog(String name, int age, boolean dangerous) {
         super(name, age); // This calls the Pet class (don't write Pet, write super)
-                          // Rather than initializing this.name and this.age ,
-                          // We can call on the Pet class
+        // Rather than initializing this.name and this.age ,
+        // We can call on the Pet class
         this.dangerous = dangerous;
     }
 
+    @Override
+    public void makeSound() {
+        System.out.println("woof woof");
+    }
 
     // TO GET THE FOLLOWING, USE ALT + INSERT
     @Override
