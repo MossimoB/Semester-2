@@ -2,10 +2,11 @@ package org.mossimo;
 
 public class Main {
     public static void main(String[] args) {
-        Cat cat = new Cat("snow", 3, 2);
-        System.out.println(cat);
+        Pet pet = new Cat("Snow", 3, 2);
+        
+        Object object1 = new Cat("Snow", 3, 2);
+        Object object2 = new Dog("Snow", 3, false);
 
-        Dog dog = new Dog("rosco", 12, true);
-        System.out.println("\n" + dog);
+        System.out.println(pet.equals(object1)); // polymorphism
     }
 }
