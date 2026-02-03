@@ -26,6 +26,12 @@ public class Pet extends Object {
         this.age = age;
     }
 
+    // if we want abstract to work, the class needs to be abstract too
+    // public abstract class Pet extends Object
+    public abstract void makeSound();
+
+    public abstract double fake();
+
     // Since wrote this in Pet class, both Cat and Dog have it too
     // fakeMethod with NO parameter
     public void fakeMethod() {
