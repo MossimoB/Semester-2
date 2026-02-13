@@ -1,0 +1,140 @@
+# DataStructuresAndOOP - Assignment02
+
+## **Submission:**
+
+**Please submit four .java files in total. Do not zip your files**.
+
+* for each task, you will have to create three packages (i.e.: `employeemanagementsystem`, `librarycatalogsystem`, and `flexiblestudentcomparator`) and put all files related to each task inside.
+* `Main.java` does not belong to any package above.
+* one zip file that contains the entire project
+
+**Full Score**: 100
+
+## Key Concepts for This Assignment
+
+1. Inheritance
+2. Polymorphism
+3. Abstract class
+4. Interface
+5. Comparable
+6. Comparator
+
+## Task 1: Employee Management System
+
+### Description:
+
+Design an Employee Management System that has different types of employees.
+The system should be able to display employee details, calculate salaries, and apply bonuses.
+
+### Requirements:
+
+1. Create an abstract class `Employee` with the following fields:
+  - `String id`, four digits with zero padding, auto-increased
+  - `String name`
+  - `double baseSalary`
+  - constructor with `name` and `baseSalary`
+  - Abstract method `double calculateSalary()`
+  - Concrete method `void displayDetails()` to print employee information (use `toString()` method).
+  - `toString()`
+  - `equals()`
+  - Getters and setters
+2. Create two subclasses:
+  - `FullTimeEmployee`:
+    - `int performanceRate`
+    - constructor with `name`, `baseSalary` and `performanceRate`
+    - The salary is calculated as `baseSalary + performanceBonus`.
+    - `toString()` should also print the salary
+    - `equals()`
+    - Getters and setters
+  - `PartTimeEmployee`:
+    - `int workHour`
+    - `double hourlyRate`
+    - constructor with `name`, `baseSalary`. `workHour` and `hourlyRate`
+    - The salary is calculated as `hourlyRate * hoursWorked`.
+    - `toString()` should also print the salary
+    - `equals()`
+    - Getters and setters
+3. Create an interface `BonusEligible` with a method:
+  - `double calcBonus()`;
+  - Only `FullTimeEmployee` should implement this interface. If the rating is `>= 8`, give a `10%` bonus, otherwise, `5%`.
+4. Test the system by creating a list of `Employee` objects (two full-time and two part-time), displaying their details, and calculating their salaries.
+
+## Task 2: Library Catalog System
+
+### Description:
+
+You need to design a Library Catalog System that keeps track of books and their details.
+
+### Requirements:
+1. Create an abstract class `Book` with:
+  - `String title`
+  - `String author`
+  - `int publishYear`
+  - All arguments constructor
+  - `toString()`
+  - `equals()`
+  - Getters and setters
+2. Create two subclasses:
+  - `Ebook`:
+    - `double fileSizeMB`
+    - All arguments constructor
+  - `PrintedBook`:
+    - `int numOfPages`
+    - All arguments constructor
+3. `Book` class Implement `Comparable<Book>`:
+  - Compare books by `publicationYear` (older books first), if the `publicationYear` are the same, then compare the `title` (alphabetically)
+4. `Ebook` override the `compareTo()`
+  - Compare books by `fileSizeMB` assendingly.
+5. `PrintedBook` override the `compareTo()`
+  - Compare books by `numOfPages` desendingly.
+5. Sort and display books:
+  - Store books in an `List<Book>` and sort them using `Collections.sort()` and print the result.
+
+## Task 3: Flexible Student Comparator
+
+### Description:
+
+You need to compare students dynamically using a single comparator that supports three different sorting strategies. The default sorting is by id, and when there is a tie, a secondary field will be used.
+
+### Requirements:
+
+1. Create a class `Student` with:
+  - `String id`, four digits with zero padding,
+  - `String name`
+  - `double score`
+  - `int age`
+  - constructor with `name` and `age`, score is randomly generated between `[60, 100]`
+  - `toString()`
+  - `equals()`
+  - Getters and setters
+2. Create a `StudentComparator` class as an inner class in `Student` class that implements
+`Comparator<Student>` with a private field:
+  - `SoryType sortType` (enum with value `SCORE`, `NAME`, `AGE`, `ID`)
+  - All argument constructor
+  - In the override `compare()`, apply the following logic:
+    - If `sortType.equals(SCORE)`, sort by `score` descending â†’ if `scores` are equal, sort by `age` ascending.
+    - If `sortType.equals(NAME)`, sort by `name` ascending â†’ if `names` are equal, sort by `id` ascending.
+    - If `sortType.equals(AGE)`, sort by `age` ascending â†’ if `age` are equal, sort by `id` ascending.
+    - Default sorting is by `id` ascending â†’ if `IDs` are equal, sort by `age` descending.
+3.	Test the system in main():
+  - Create a `List<Student>` with 5 students.
+  - Use `StudentComparator(SCORE)` to sort and display results.
+  - Use `StudentComparator(NAME)` to sort and display results.
+  - Use `StudentComparator(AGE)` to sort and display results.
+  - Use `StudentComparator(ID)` to sort and display results.
+
+### Example:
+
+| ID   | Name    | Score | Age |
+|------|---------|-------|-----|
+| 0102 | Alice   | 85.0  | 20  |
+| 0104 | Bob     | 85.0  | 22  |
+| 0101 | Charlie | 92.0  | 19  |
+| 0103 | David   | 85.0  | 20  |
+
+- `SCORE` â†’ Sorted by `score` descending, `age` ascending
+Charlie â†’ Alice â†’ David â†’ Bob
+- `NAME` â†’ Sorted by `name` ascending, `id` ascending
+Alice â†’ Bob â†’ Charlie â†’ David
+- `ID` (default) â†’ Sorted by `id` ascending, `age` descending
+0101 â†’ 0102 â†’ 0103 â†’ 0104
