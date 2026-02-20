@@ -52,7 +52,7 @@ public class ExceptionHandling {
          * For this to work, we'd have to have a separate class
          * That class would be called IllegalArgumentException.java
          * In the file, the first line (not including the package), should be:
-         * public class IllegalArgumentException extends Throwable { }
+         * public class IllegalArgumentException extends Exception { }
          */
         int age = -5;
         if (age < 0) {
@@ -60,4 +60,5 @@ public class ExceptionHandling {
         }
     }
 }
+
 
