@@ -33,6 +33,14 @@ public class ExceptionHandling {
             System.out.println("Cannot divide by zero!");
             System.out.println("Error message: " + e.getMessage());
 
+        } catch (RuntimeException e) {
+            e.getMessage();
+            e.getClass();        // Arithmetic or IndexOutOfBound
+            e.getStackTrace();
+            System.exit(0); // Stops everything immediately. 
+                            // 0 is good
+                            // 1 is bad
+        
         } finally {
             // ALWAYS runs
             System.out.println("Program finished attempt.");
@@ -40,6 +48,11 @@ public class ExceptionHandling {
 
         /**
          * Example of manually throwing an exception
+         * 
+         * For this to work, we'd have to have a separate class
+         * That class would be called IllegalArgumentException.java
+         * In the file, the first line (not including the package), should be:
+         * public class IllegalArgumentException extends Throwable { }
          */
         int age = -5;
         if (age < 0) {
@@ -47,3 +60,4 @@ public class ExceptionHandling {
         }
     }
 }
+
