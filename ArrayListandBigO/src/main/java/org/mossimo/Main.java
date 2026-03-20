@@ -42,7 +42,7 @@ public class Main {
         // shifts all elements after the index to the next location
 
         // ArrayList
-        // Getting and Setting: directly calculate the address in one shot
+        // Good at Getting and Setting: directly calculate the address in one shot
 
         // (Bad) Adding:
         // 1. add at the end -> most of the time no copy-pasting, only when the capacity is full
@@ -63,7 +63,7 @@ public class Main {
 
         //-----------------------------------------------------------------------------------------------------------//
 
-        // LinkedLIst (DoublyLInkedList)
+        // LinkedLIst (DoublyLInkedList jumps two elements to reach the final element)
 
         // (Bad) Getting and Setting: Worst case, you have to iterate through half of the list
         // in order to read/modify an element
@@ -74,10 +74,54 @@ public class Main {
 
         // Big O Notation
 
-        // O(1)         y = a * 1
-        // O(logn)      y = a * logx
-        // O(n)         y = a * x
-        // O(n^2)       y = a * x^2
-        // O(2^n)       y = a * 2^x
+        // O(1)         y = a * 1       Constant
+        // O(logn)      y = a * logn    BST(Binary Search Tree)
+        // O(n)         y = a * x       Linearly Related
+        // O(n^2)       y = a * x^2     
+        // O(2^n)       y = a * 2^x     
+
+        // Big O n
+        public static double avg(List<Integer> nums) {
+            double sum = 0;
+
+            for (int num : nums) {
+                sum += num;
+            }
+
+            return sum / nums.size();
+        }
+
+        // Big O n^2 (we take the worst case possible)
+        public static double sum(int[][] numss) {
+            int sum = 0;
+
+            for (int[] num : numss) {
+                for (int num : nums) {
+                    sum += num;
+                }
+            }
+
+            return sum;
+        }
+
+        // Big O n
+        public static boolean isPalindrome(String str) {
+            for (int i = 0; i < str.length() / 2; i++) {
+                if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Big O 2^n
+        public static int fibonacciRecursion(int num) {
+            if (num <= 1) {
+                return num;
+            }
+
+            return fibonacciRecursion(num - 1) + fibonacciRecursion(num - 2);
+        }
     }
 }
